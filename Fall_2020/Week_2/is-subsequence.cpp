@@ -1,12 +1,13 @@
 /*
 Problem: https://leetcode.com/problems/first-unique-character-in-a-string/
 
-Approach: Save the character in a map to check its uniqueness, then iterate over the map to get
-            the index. In this case, the index is saved too, but there are other approaches.
+Approach: Iterate through both strings, and check if the characters match. If so, move the pointer
+            of the subsequent string. At the end, if the pointer has reached the end of the string
+            it means that it is subsequent.
 
 Time complexity: O(n)
 
-Space complexity: O(1) (because there's a maximum of 26 characters)
+Space complexity: O(1)
 */
 
 #include <iostream>
