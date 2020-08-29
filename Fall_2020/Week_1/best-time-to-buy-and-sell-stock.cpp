@@ -1,3 +1,14 @@
+/*
+Problem: https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+
+Approach: Traverse the vector once, keeping track of the minimum price, and
+            with that calculating each difference to track the max profit.
+
+Time complexity: O(n)
+
+Space complexity: O(1)
+*/
+
 #include <iostream>
 #include <vector>
 
