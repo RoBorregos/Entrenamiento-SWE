@@ -1,7 +1,7 @@
 /*
 Problem: https://leetcode.com/problems/validate-binary-search-tree/
 
-Approach: Do a Inorder level in an iterative way using a stack
+Approach: Do a Inorder traversal in an iterative way using a stack
 
 Time complexity: O(n)
 
