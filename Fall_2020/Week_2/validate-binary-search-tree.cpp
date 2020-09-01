@@ -1,7 +1,7 @@
 /*
 Problem: https://leetcode.com/problems/validate-binary-search-tree/
 
-Approach: Use DFS and keep track of the range of values permited on each subtree.
+Approach: Do a Inorder level in an iterative way using a stack
 
 Time complexity: O(n)
 
@@ -12,6 +12,7 @@ Space complexity: O(n)
 #include <queue>
 #include <vector>
 #include <climits>
+#include <stack>
 
 using namespace std;
 
@@ -33,15 +34,28 @@ void deleteTree(TreeNode *root) {
     }
 }
 
-bool isValid(TreeNode *root, const int64_t min_val, const int64_t max_val) {
-    return root == nullptr ||
-           ((root->val < max_val && root->val > min_val) &&
-            isValid(root->left, min_val, root->val) && isValid(root->right, root->val, max_val));
-}
-
-bool isValidBST(TreeNode *root) {
-    return root == nullptr ||
-           (isValid(root->left, LONG_MIN, root->val) && isValid(root->right, root->val, LONG_MAX));
+bool isValidBST(TreeNode* root) {
+    if(!root) return true;
+    stack<TreeNode*> st;
+    TreeNode* current = root;
+    // String because there is not a way to know if we have not initialized a var
+    string last;
+    while(!st.empty() || current){
+        while(current){
+            // Push all left son nodes
+            st.push(current); current = current->left;
+        }
+        // Get the mostleft son
+        current = st.top();
+        // Drop it
+        st.pop();
+        // If it does not exist last or value is greater than last we change our last value
+        if(!last.size() || current->val > stoi(last)) last = to_string(current->val);
+        else return false;
+        // Get the right value
+        current = current->right;
+    }
+    return true;
 }
 
 int main() {
