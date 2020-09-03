@@ -39,3 +39,30 @@ def mergeTrees(t1: TreeNode, t2: TreeNode) -> TreeNode:
         return 
     merge(t1, t2)
     return t1
+
+
+
+root1 = TreeNode(1)  
+root1.left = TreeNode(2)  
+root1.right = TreeNode(3)  
+root1.left.left = TreeNode(4)  
+root1.left.right = TreeNode(5)  
+root1.right.right = TreeNode(6) 
+
+root2 = TreeNode(4)  
+root2.left = TreeNode(1)  
+root2.right = TreeNode(7)  
+root2.left.left = TreeNode(3)  
+root2.right.left = TreeNode(2)  
+root2.right.right = TreeNode(6)  
+
+root = mergeTrees(root1, root2)
+
+def inorder(node): 
+    if node == None: 
+        return
+    inorder(node.left)
+    print(node.val, end = " ") 
+    inorder(node.right) 
+    
+inorder(root)
