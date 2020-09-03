@@ -53,3 +53,4 @@ while head != None:
     head = head.next
 
 print(string[:-4])
+
