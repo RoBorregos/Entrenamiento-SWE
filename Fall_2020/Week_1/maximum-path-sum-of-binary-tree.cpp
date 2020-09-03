@@ -1,11 +1,14 @@
 /*
-Problem: https://leetcode.com/problems/maximum-depth-of-binary-tree/
+Problem: https://leetcode.com/problems/binary-tree-maximum-path-sum/
 
-Approach: Traverse the binary tree on a DFS fashion and keep track of the maximum depth.
+Approach: Traverse the binary tree on a DFS fashion, returning the maximum path for each node
+        that could be one of the three possibilites (node, node + maxright, node + maxleft).
+        And also its important to verify if (node + maxright + maxleft) is the maxmium path, 
+        but this path would not be returned, because we are returning paths not finished.
 
 Time complexity: O(n)
 
-Space complexity: O(1)
+Space complexity: O(n)
 */
 
 #include <iostream>
