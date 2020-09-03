@@ -12,3 +12,5 @@ Feel free to add as much solutions as you want, maybe you took a different appro
 Please be sure to not delete any current solution, or if the file has to be created follow this-type-of-naming.
 
 Finally, create a new branch for the problem(s) you'll submit, and make sure to fulfill all the PR's requirements.
+
+## If your approach has already been submitted, then simply comment it on the issue and I'll close it.
