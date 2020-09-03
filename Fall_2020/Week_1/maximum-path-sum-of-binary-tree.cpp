@@ -13,7 +13,7 @@ Space complexity: O(n)
 
 #include <iostream>
 #include <vector>
-#include <limits.h>
+#include <climits>
 
 using namespace std;
 
@@ -35,7 +35,7 @@ void deleteTree(TreeNode *root) {
     }
 }
 
-int doDfs(TreeNode* node, int &_max){
+int doDfs(TreeNode* node, int &_max) {
     if (node == nullptr) {
         return 0;
     }
