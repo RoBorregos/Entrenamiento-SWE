@@ -11,20 +11,12 @@ Space complexity: O(n)
 #include <iostream>
 #include <queue>
 #include <vector>
+#include "../../Common/BinaryTree.h"
 
 using namespace std;
+using namespace SweCommmon;
 
-struct TreeNode {
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode() : val(0), left(nullptr), right(nullptr) {}
-    explicit TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-    ~TreeNode() { cout << "Deleted the node: " << val << endl; }
-};
-
-void deleteTree(TreeNode *root) {
+void deleteTree(TreeNode<int> *root) {
     if (root) {
         deleteTree(root->left);
         deleteTree(root->right);
@@ -42,7 +34,7 @@ void printLevelOrder(const vector<vector<int>> &levels) {
     }
 }
 
-vector<vector<int>> levelOrder(TreeNode *root) {
+vector<vector<int>> levelOrder(TreeNode<int> *root) {
     if (!root) {
         return {};
     }
@@ -50,7 +42,7 @@ vector<vector<int>> levelOrder(TreeNode *root) {
     vector<vector<int>> levels;
     vector<int> level;
 
-    queue<TreeNode *> nodes_queue;
+    queue<TreeNode<int> *> nodes_queue;
     int nodes_in_level = 1;
     nodes_queue.push(root);
 
@@ -73,11 +65,13 @@ vector<vector<int>> levelOrder(TreeNode *root) {
 }
 
 int main() {
-    TreeNode *root = new TreeNode(3);
-    root->left = new TreeNode(9);
-    root->right = new TreeNode(20);
-    root->right->left = new TreeNode(15);
-    root->right->right = new TreeNode(7);
+    TreeNode<int> *root = new TreeNode<int>(3);
+    root->left = new TreeNode<int>(9);
+    root->right = new TreeNode<int>(20);
+    root->right->left = new TreeNode<int>(15);
+    root->right->right = new TreeNode<int>(7);
+
+    printTree(root);
 
     printLevelOrder(levelOrder(root));
 
