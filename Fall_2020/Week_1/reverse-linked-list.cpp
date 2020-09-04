@@ -2,8 +2,8 @@
 Problem: https://leetcode.com/problems/reverse-linked-list/
 
 Aproach: Reverse a singly linked list by getting 3 variables, next, current and prev
-in te cycle you are moving the pointers, current become next, prev become curr and next is 
-one pointer forward of curr. Also, next pointer of curr become prev, to invert te directions 
+in te cycle you are moving the pointers, current become next, prev become curr and next is
+one pointer forward of curr. Also, next pointer of curr become prev, to invert te directions
 of the linked list. And you retrun prev, becosuse in the last position curr is null.
 
 Time complexity: O(n)
@@ -11,26 +11,25 @@ Space complexity: O(n)
 
 */
 
-
 #include <iostream>
 
 struct ListNode {
     int val;
-    ListNode *next;
+    ListNode* next;
     ListNode() : val(0), next(nullptr) {}
     explicit ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
+    ListNode(int x, ListNode* next) : val(x), next(next) {}
 };
 
-void printLinkedList(ListNode*head) {
+void printLinkedList(ListNode* head) {
     while (head) {
-        std:: cout << head->val << "->";
+        std::cout << head->val << "->";
         head = head->next;
         if (!head) {
-            std:: cout << "NULL";
+            std::cout << "NULL";
         }
     }
-    std:: cout << "\n";
+    std::cout << "\n";
 }
 
 void deleteList(ListNode* head) {
@@ -47,9 +46,9 @@ ListNode* reverseList(ListNode* head) {
         head->next = prev;
         prev = head;
         head = next;
-        }
-        return prev;
     }
+    return prev;
+}
 int main() {
     ListNode* head = new ListNode(1);
     head->next = new ListNode(2);
@@ -62,7 +61,7 @@ int main() {
 
     head = reverseList(head);
 
-    std:: cout<< "Reverse Linked List: ";
+    std::cout << "Reverse Linked List: ";
     printLinkedList(head);
 
     deleteList(head);
