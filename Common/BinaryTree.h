@@ -3,10 +3,6 @@
 
 #include <iostream>
 
-namespace {
-constexpr int kCount = 10;
-}  // namespace
-
 namespace SweCommmon {
 
 // TreeNode simple structure.
@@ -31,12 +27,14 @@ void deleteTree(TreeNode<T> *root) {
     }
 }
 
+// Prints the binary tree in a user friendly matter.
+// space and space_count determine the amount of spaces to leave between level.
 template <typename T>
-void printTree(TreeNode<T> *root, int space = 0) {
+void printTree(TreeNode<T> *root, int space = 0, const int space_count = 10) {
     if (root) {
-        space += kCount;
+        space += space_count;
         printTree(root->right, space);
-        for (int i = kCount; i < space; ++i) {
+        for (int i = space_count; i < space; ++i) {
             std::cout << " ";
         }
         std::cout << root->val << "\n";
