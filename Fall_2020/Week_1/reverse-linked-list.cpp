@@ -13,25 +13,24 @@ Space complexity: O(n)
 
 
 #include <iostream>
-using namespace std;
- struct ListNode {
-      int val;
-      ListNode *next;
-      ListNode() : val(0), next(nullptr) {}
-      ListNode(int x) : val(x), next(nullptr) {}
-      ListNode(int x, ListNode *next) : val(x), next(next) {}
-  };
 
-void printLinkedList(ListNode*head){
-    while(head){
-        cout << head->val << "->";
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    explicit ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+
+void printLinkedList(ListNode*head) {
+    while (head) {
+        std:: cout << head->val << "->";
         head = head->next;
-        if (!head){
-            cout << "NULL";
+        if (!head) {
+            std:: cout << "NULL";
         }
     }
-    cout << "\n";
-
+    std:: cout << "\n";
 }
 
 void deleteList(ListNode* head) {
@@ -40,34 +39,30 @@ void deleteList(ListNode* head) {
         delete head;
         head = temp;
     }
-       
 }
- ListNode* reverseList(ListNode* head) {
-        ListNode* prev = NULL;
-        while(head){
-            ListNode* next = head->next;
-            head->next = prev;
-            prev = head;
-            head = next;
+ListNode* reverseList(ListNode* head) {
+    ListNode* prev = NULL;
+    while (head) {
+        ListNode* next = head->next;
+        head->next = prev;
+        prev = head;
+        head = next;
         }
-        
         return prev;
-
     }
-int main()
-{
+int main() {
     ListNode* head = new ListNode(1);
     head->next = new ListNode(2);
     head->next->next = new ListNode(3);
     head->next->next->next = new ListNode(4);
     head->next->next->next->next = new ListNode(5);
 
-    cout << "Linked list: ";
+    std::cout << "Linked list: ";
     printLinkedList(head);
 
     head = reverseList(head);
 
-    cout<< "Reverse Linked List: ";
+    std:: cout<< "Reverse Linked List: ";
     printLinkedList(head);
 
     deleteList(head);
