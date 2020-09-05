@@ -8,48 +8,35 @@ Time complexity: O(n)
 Space complexity: O(n)
 */
 
+#include <climits>
 #include <iostream>
 #include <queue>
 #include <vector>
-#include <climits>
+
+#include "../../Common/BinaryTree.h"
 
 using namespace std;
+using namespace SweCommmon;
 
-struct TreeNode {
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode() : val(0), left(nullptr), right(nullptr) {}
-    explicit TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-    ~TreeNode() { cout << "Deleted the node: " << val << endl; }
-};
-
-void deleteTree(TreeNode *root) {
-    if (root) {
-        deleteTree(root->left);
-        deleteTree(root->right);
-        delete root;
-    }
-}
-
-bool isValid(TreeNode *root, const int64_t min_val, const int64_t max_val) {
+bool isValid(TreeNode<int> *root, const int64_t min_val, const int64_t max_val) {
     return root == nullptr ||
            ((root->val < max_val && root->val > min_val) &&
             isValid(root->left, min_val, root->val) && isValid(root->right, root->val, max_val));
 }
 
-bool isValidBST(TreeNode *root) {
+bool isValidBST(TreeNode<int> *root) {
     return root == nullptr ||
            (isValid(root->left, LONG_MIN, root->val) && isValid(root->right, root->val, LONG_MAX));
 }
 
 int main() {
-    TreeNode *root = new TreeNode(3);
-    root->left = new TreeNode(9);
-    root->right = new TreeNode(20);
-    root->right->left = new TreeNode(15);
-    root->right->right = new TreeNode(7);
+    TreeNode<int> *root = new TreeNode<int>(3);
+    root->left = new TreeNode<int>(9);
+    root->right = new TreeNode<int>(20);
+    root->right->left = new TreeNode<int>(15);
+    root->right->right = new TreeNode<int>(7);
+
+    printTree(root);
 
     if (isValidBST(root)) {
         cout << "Is valid" << endl;

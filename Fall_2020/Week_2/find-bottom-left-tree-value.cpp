@@ -12,32 +12,16 @@ Space complexity: O(n)
 #include <iostream>
 #include <queue>
 #include <vector>
+#include "../../Common/BinaryTree.h"
 
 using namespace std;
+using namespace SweCommmon;
 
-struct TreeNode {
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode() : val(0), left(nullptr), right(nullptr) {}
-    explicit TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-    ~TreeNode() { cout << "Deleted the node: " << val << endl; }
-};
-
-void deleteTree(TreeNode *root) {
-    if (root) {
-        deleteTree(root->left);
-        deleteTree(root->right);
-        delete root;
-    }
-}
-
-int findBottomLeftValue(TreeNode *root) {
+int findBottomLeftValue(TreeNode<int> *root) {
     vector<int> level;
     int bottom_left;
 
-    queue<TreeNode *> nodes_queue;
+    queue<TreeNode<int> *> nodes_queue;
     int nodes_in_level = 1;
     nodes_queue.push(root);
 
@@ -60,13 +44,15 @@ int findBottomLeftValue(TreeNode *root) {
 }
 
 int main() {
-    TreeNode *root = new TreeNode(1);
-    root->left = new TreeNode(2);
-    root->right = new TreeNode(3);
-    root->left->left = new TreeNode(4);
-    root->right->left = new TreeNode(5);
-    root->right->left->left = new TreeNode(7);
-    root->right->right = new TreeNode(6);
+    TreeNode<int> *root = new TreeNode<int>(1);
+    root->left = new TreeNode<int>(2);
+    root->right = new TreeNode<int>(3);
+    root->left->left = new TreeNode<int>(4);
+    root->right->left = new TreeNode<int>(5);
+    root->right->left->left = new TreeNode<int>(7);
+    root->right->right = new TreeNode<int>(6);
+
+    printTree(root);
 
     cout << findBottomLeftValue(root) << endl;
 

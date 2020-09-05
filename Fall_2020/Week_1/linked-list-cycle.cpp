@@ -10,19 +10,12 @@ Space complexity: O(1)
 
 #include <iostream>
 #include <vector>
+#include "../../Common/LinkedList.h"
 
 using namespace std;
+using namespace SweCommmon;
 
-struct ListNode {
-    int val;
-    ListNode* next;
-    bool is_cycle;
-    explicit ListNode(int x) : val(x), next(nullptr), is_cycle(false) {}
-    ListNode(int x, ListNode* n) : val(x), next(n), is_cycle(true) {}
-    ~ListNode() { cout << "deleted node: " << val << endl; }
-};
-
-bool hasCycle(ListNode* head) {
+bool hasCycle(ListNode<int>* head) {
     if (!head || !head->next) return false;
     auto conejo = head->next;
     auto tortuga = head;
@@ -33,7 +26,7 @@ bool hasCycle(ListNode* head) {
     return conejo == tortuga;
 }
 
-void deleteList(ListNode* head) {
+void deleteList(ListNode<int>* head) {
     while (head != nullptr) {
         auto temp = head->next;
         if (head->is_cycle) {
@@ -47,9 +40,11 @@ void deleteList(ListNode* head) {
 }
 
 int main() {
-    ListNode* head = new ListNode(1);
-    head->next = new ListNode(2);
-    head->next->next = new ListNode(3, head->next);
+    ListNode<int>* head = new ListNode<int>(1);
+    head->next = new ListNode<int>(2);
+    head->next->next = new ListNode<int>(3, head->next);
+
+    printList(head);
 
     if (hasCycle(head)) {
         cout << "Has cycle" << endl;
