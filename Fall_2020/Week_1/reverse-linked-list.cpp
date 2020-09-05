@@ -12,37 +12,16 @@ Space complexity: O(n)
 */
 
 #include <iostream>
+#include "../../Common/LinkedList.h"
 
-struct ListNode {
-    int val;
-    ListNode* next;
-    ListNode() : val(0), next(nullptr) {}
-    explicit ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode* next) : val(x), next(next) {}
-};
+using namespace std;
+using namespace SweCommmon;
 
-void printLinkedList(ListNode* head) {
+
+ListNode<int>* reverseList(ListNode<int>* head) {
+    ListNode<int>* prev = NULL;
     while (head) {
-        std::cout << head->val << "->";
-        head = head->next;
-        if (!head) {
-            std::cout << "NULL";
-        }
-    }
-    std::cout << "\n";
-}
-
-void deleteList(ListNode* head) {
-    while (head != nullptr) {
-        auto temp = head->next;
-        delete head;
-        head = temp;
-    }
-}
-ListNode* reverseList(ListNode* head) {
-    ListNode* prev = NULL;
-    while (head) {
-        ListNode* next = head->next;
+        ListNode<int>* next = head->next;
         head->next = prev;
         prev = head;
         head = next;
@@ -50,19 +29,19 @@ ListNode* reverseList(ListNode* head) {
     return prev;
 }
 int main() {
-    ListNode* head = new ListNode(1);
-    head->next = new ListNode(2);
-    head->next->next = new ListNode(3);
-    head->next->next->next = new ListNode(4);
-    head->next->next->next->next = new ListNode(5);
+    ListNode<int>* head = new ListNode<int>(1);
+    head->next = new ListNode<int>(2);
+    head->next->next = new ListNode<int>(3);
+    head->next->next->next = new ListNode<int>(4);
+    head->next->next->next->next = new ListNode<int>(5);
 
-    std::cout << "Linked list: ";
-    printLinkedList(head);
+    cout << "Linked list: ";
+    printList(head);
 
     head = reverseList(head);
 
-    std::cout << "Reverse Linked List: ";
-    printLinkedList(head);
+    cout << "Reverse Linked List: ";
+    printList(head);
 
     deleteList(head);
     return 0;
