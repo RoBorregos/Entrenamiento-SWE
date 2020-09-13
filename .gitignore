@@ -13,3 +13,4 @@
 
 ### Above ignores all executable files ###
 .vscode
+.DS_Store
