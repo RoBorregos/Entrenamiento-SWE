@@ -19,9 +19,8 @@ using namespace std;
 using namespace SweCommmon;
 
 bool isValid(TreeNode<int> *root, const int64_t min_val, const int64_t max_val) {
-    return root == nullptr ||
-           ((root->val < max_val && root->val > min_val) &&
-            isValid(root->left, min_val, root->val) && isValid(root->right, root->val, max_val));
+    return root == nullptr ||((root->val < max_val && root->val > min_val) &&
+        isValid(root->left, min_val, root->val) && isValid(root->right, root->val, max_val));
 }
 
 bool isValidBST(TreeNode<int> *root) {
