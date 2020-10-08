@@ -8,7 +8,9 @@ Time complexity: O(n)
 Space complexity: O(1)
 '''
 
-def maxProduct(nums):
+from typing import List
+
+def maxProduct(nums: List[int]) -> int:
     if not nums:
         return 0
     maxVal, minVal, globalMax = nums[0], nums[0], nums[0]
